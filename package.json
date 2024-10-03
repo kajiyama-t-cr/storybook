@@ -9,7 +9,7 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "ci:screenshot":"storycap http://localhost:6006",
+    "ci:screenshot": "storycap --serverTimeout 60000 --serverCmd \"npx http-server storybook-static -p 6006\" http://localhost:6006",
     "ci:vrt":"npx reg-suit run"
   },
   "dependencies": {
