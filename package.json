@@ -9,8 +9,9 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "ci:screenshot": "storycap --serverTimeout 60000 --serverCmd \"npx http-server storybook-static -p 6006\" http://localhost:6006",
-    "ci:vrt":"npx reg-suit run"
+    "ci:storybook": "storybook dev -p 6006 --ci",
+    "ci:screenshot": "storycap http://localhost:6006",
+    "ci:vrt": "npx reg-suit run"
   },
   "dependencies": {
     "@types/node": "22.7.4",
@@ -19,6 +20,7 @@
     "eslint": "8.57.1",
     "eslint-config-next": "14.2.14",
     "next": "14.2.14",
+    "puppeteer": "^23.5.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "typescript": "5.6.2"

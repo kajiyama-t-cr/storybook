@@ -26,8 +26,8 @@ jobs:
           git checkout ${GITHUB_REF#refs/heads/} || git checkout -b ${GITHUB_REF#refs/heads/} && git pull
       - name: storybook build
         run: npm run build-storybook
-      # - name: storybook start
-      #   run: npm run storybook
+      - name: storybook start
+        run: npm run ci:storybook
       - name: screenshot and visual regression test
         run: |
           npm run ci:screenshot
