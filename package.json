@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "storybook build --quiet",
     "ci:storybook": "npx http-server storybook-static -p 6006",
     "ci:screenshot": "storycap --verbose true --serverCmd \"npx http-server storybook-static -p 6006\" http://127.0.0.1:6006 --serverTimeout 600000",
     "ci:vrt": "npx reg-suit run"
