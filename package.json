@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "ci:screenshot":"storycap http://localhost:6006",
+    "ci:vrt":"npx reg-suit run"
   },
   "dependencies": {
     "@types/node": "22.7.4",
@@ -32,6 +34,10 @@
     "@storybook/react": "^8.3.4",
     "@storybook/test": "^8.3.4",
     "eslint-plugin-storybook": "^0.9.0",
+    "reg-keygen-git-hash-plugin": "^0.14.3",
+    "reg-notify-github-plugin": "^0.14.4",
+    "reg-publish-s3-plugin": "^0.14.4",
+    "reg-suit": "^0.14.4",
     "storybook": "^8.3.4",
     "storycap": "^5.0.1"
   }
