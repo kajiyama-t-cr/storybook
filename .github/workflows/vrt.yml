@@ -28,7 +28,7 @@ jobs:
         run: npm run build-storybook
       # - name: storybook start
       #   run: npm run ci:storybook
-      - name: screenshot and visual regression test
-        run: |
-          npm run ci:screenshot
-          npm run ci:vrt
+      - name: npm run ci:screenshot
+        run: npm run ci:screenshot
+      - name: npm run ci:vrt
+        run: npm run ci:vrt
