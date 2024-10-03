@@ -10,7 +10,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "ci:storybook": "npx http-server storybook-static -p 6006",
-    "ci:screenshot": "storycap --serverCmd \"npx http-server storybook-static -p 6006\" http://localhost:6006",
+    "ci:screenshot": "storycap --verbose true --serverCmd \"npx http-server storybook-static -p 6006\" http://localhost:6006",
     "ci:vrt": "npx reg-suit run"
   },
   "dependencies": {
