@@ -8,9 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "storybook build --quiet",
     "server-storybook": "http-server storybook-static -p 6006",
-    "storycap": "start-server-and-test server-storybook http://localhost:6006 'storycap http://localhost:6006'",
+    "storycap": "storycap --serverCmd \"server-storybook\" http://localhost:6006",
     "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && npm run storycap\""
   },
   "dependencies": {
