@@ -27,7 +27,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
 
-      # 1. リポジトリのチェックアウト
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
@@ -37,13 +36,11 @@ jobs:
       - name: Check
         run: git status
 
-      # 2. Node.jsのセットアップ（バージョンを指定）
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18' # 任意のNode.jsバージョン
 
-      # 3. npmキャッシュの復元
       - name: Restore npm cache
         uses: actions/cache@v3
         with:
@@ -52,40 +49,33 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules-
 
-      # 4. npm install（キャッシュが存在しない場合のみ実行）
       - name: Install dependencies
         run: npm install
         if: steps.cache.outputs.cache-hit != 'true'
 
-      # 5. install chrome
       - name: install chrome
         run: npx puppeteer browsers install chrome
 
-      # 5. storycap
       - name: storycap
         run: npm run storycap
 
-      # 6. mv
       - name: mv
         run: mkdir -p .reg
-      # 6. mv
+
       - name: mv
         run: mv __screenshots__ .reg/expected
 
-      # 1. リポジトリのチェックアウト
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Check
         run: git status
 
-      # 2. Node.jsのセットアップ（バージョンを指定）
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18' # 任意のNode.jsバージョン
 
-      # 3. npmキャッシュの復元
       - name: Restore npm cache
         uses: actions/cache@v3
         with:
@@ -94,19 +84,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules-
 
-      # 4. npm install（キャッシュが存在しない場合のみ実行）
       - name: Install dependencies
         run: npm install
         if: steps.cache.outputs.cache-hit != 'true'
 
-      # 5. install chrome
       - name: install chrome
         run: npx puppeteer browsers install chrome
-        
-      # 5. storycap
+
       - name: storycap
         run: npm run storycap
 
-      # 6. mv
       - name: reg-suit
         run: npx reg-suit compare -v
