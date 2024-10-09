@@ -48,8 +48,11 @@ jobs:
       - name: build storybook
         run: npm run build-storybook
 
+      - name: star storybook
+        run: npm run server-storybook &
+
       - name: storycap
-        run: npm run storycap
+        run: npx storycap http://localhost:6006
 
       - name: mv
         run: mkdir -p .reg
