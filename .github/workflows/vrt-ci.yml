@@ -101,4 +101,4 @@ jobs:
 
       # 6. mv
       - name: reg-suit
-        run: npx reg-suit compare
+        run: npx reg-suit compare -v
