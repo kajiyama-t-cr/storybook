@@ -1,0 +1,97 @@
+name: Frontend CI
+
+on:
+  pull_request:
+    branches:
+      - feature/*
+      - develop
+  push:
+    branches:
+      - feature/*
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: 18
+  PNPM_VERSION: 8
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  UITest:
+    name: "UI テスト"
+    runs-on: ubuntu-20.04
+    steps:
+
+      # 1. リポジトリのチェックアウト
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+          fetch-depth: 0
+        run: git status
+
+      # 2. Node.jsのセットアップ（バージョンを指定）
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # 任意のNode.jsバージョン
+
+      # 3. npmキャッシュの復元
+      - name: Restore npm cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-
+
+      # 4. npm install（キャッシュが存在しない場合のみ実行）
+      - name: Install dependencies
+        run: npm install
+        if: steps.cache.outputs.cache-hit != 'true'
+
+      # 5. storycap
+      - name: storycap
+        run: npm run storycap
+
+      # 6. mv
+      - name: mv
+        run: mv __screenshots__/* .reg/expected/*
+
+      # 1. リポジトリのチェックアウト
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        run: git status
+
+      # 2. Node.jsのセットアップ（バージョンを指定）
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # 任意のNode.jsバージョン
+
+      # 3. npmキャッシュの復元
+      - name: Restore npm cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-
+
+      # 4. npm install（キャッシュが存在しない場合のみ実行）
+      - name: Install dependencies
+        run: npm install
+        if: steps.cache.outputs.cache-hit != 'true'
+
+      # 5. storycap
+      - name: storycap
+        run: npm run storycap
+
+      # 6. mv
+      - name: reg-suit
+        run: npx reg-suit compare
