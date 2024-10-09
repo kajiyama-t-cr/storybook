@@ -45,18 +45,6 @@ jobs:
       - name: install chrome
         run: npx puppeteer browsers install chrome
 
-      - name: storybook-foo
-        run: npm run storycap
-
-      - name: storybook
-        run: npm run build-storybook
-
-      - name: server-storybook
-        run: npm run server-storybook &
-
-      - name: wait
-        run: npx wait-on tcp:6006
-
       - name: storycap
         run: npm run storycap
 
