@@ -50,9 +50,7 @@ jobs:
 
       - name: storycap
         run: |
-          npm run server-storybook \
-          npx storycap http://localhost:6006
-
+          npm run storycap
 
       - name: mv
         run: mkdir -p .reg
