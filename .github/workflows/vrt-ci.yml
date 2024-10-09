@@ -63,7 +63,7 @@ jobs:
         run: npx http-server storybook-static -p 6006 &
 
       - name: storycap
-        run: npm run storycap
+        run: npx storycap http://localhost:6006
 
       - name: mv
         run: mkdir -p .reg
