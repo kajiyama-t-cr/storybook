@@ -9,7 +9,7 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "start-storybook": "http-server storybook-static -p 6006",
+    "server-storybook": "http-server storybook-static -p 6006",
     "storycap": "storycap http://localhost:6006"
   },
   "dependencies": {
