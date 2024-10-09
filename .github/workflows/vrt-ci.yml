@@ -63,6 +63,7 @@ jobs:
 
       # 6. mv
       - name: mv
+        run: mkdir -p .reg
         run: mv __screenshots__ .reg/expected
 
       # 1. リポジトリのチェックアウト
