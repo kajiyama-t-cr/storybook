@@ -94,5 +94,11 @@ jobs:
       - name: storycap
         run: npm run storycap
 
+      - name: check
+        run: ls .reg/expected
+
+      - name: check
+        run: ls __screenshots__
+
       - name: reg-suit
         run: npx reg-suit compare -v
