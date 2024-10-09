@@ -57,6 +57,10 @@ jobs:
         run: npm install
         if: steps.cache.outputs.cache-hit != 'true'
 
+      # 5. install chrome
+      - name: install chrome
+        run: npx puppeteer browsers install chrome
+
       # 5. storycap
       - name: storycap
         run: npm run storycap
@@ -95,6 +99,10 @@ jobs:
         run: npm install
         if: steps.cache.outputs.cache-hit != 'true'
 
+      # 5. install chrome
+      - name: install chrome
+        run: npx puppeteer browsers install chrome
+        
       # 5. storycap
       - name: storycap
         run: npm run storycap
