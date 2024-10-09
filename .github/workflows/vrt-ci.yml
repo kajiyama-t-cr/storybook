@@ -59,7 +59,7 @@ jobs:
       - name: storybook
         run: npm run build-storybook
 
-      - name: storybook
+      - name: start storybook
         run: npm run start-storybook
 
       - name: storycap
