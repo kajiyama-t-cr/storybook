@@ -63,7 +63,7 @@ jobs:
 
       # 6. mv
       - name: mv
-        run: mv __screenshots__/* .reg/expected/*
+        run: mv __screenshots__ .reg/expected
 
       # 1. リポジトリのチェックアウト
       - name: Checkout repository
