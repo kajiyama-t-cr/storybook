@@ -59,11 +59,12 @@ jobs:
       - name: storycap
         run: npm run storycap
 
-      - name: mv
-        run: mkdir -p .reg
-
-      - name: mv
-        run: mv __screenshots__ .reg/expected
+    - name: Upload expected screenshots to artifact # 他のstepでスクショを使うのでartifactにアップする
+      uses: actions/upload-artifact@v4
+      with:
+        name: expected-screenshots
+        path: __screenshots__
+        retention-days: 1
 
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -93,6 +94,12 @@ jobs:
 
       - name: storycap
         run: npm run storycap
+
+      - name: Download expected screenshots from artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: expected-screenshots
+          path: .reg/expected/
 
       - name: check
         run: ls .reg/expected
