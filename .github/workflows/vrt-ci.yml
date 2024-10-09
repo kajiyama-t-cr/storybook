@@ -59,12 +59,12 @@ jobs:
       - name: storycap
         run: npm run storycap
 
-    - name: Upload expected screenshots to artifact # 他のstepでスクショを使うのでartifactにアップする
-      uses: actions/upload-artifact@v4
-      with:
-        name: expected-screenshots
-        path: __screenshots__
-        retention-days: 1
+      - name: Upload expected screenshots to artifact # 他のstepでスクショを使うのでartifactにアップする
+        uses: actions/upload-artifact@v4
+        with:
+          name: expected-screenshots
+          path: __screenshots__
+          retention-days: 1
 
       - name: Checkout repository
         uses: actions/checkout@v3
