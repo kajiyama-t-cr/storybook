@@ -10,12 +10,14 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "server-storybook": "http-server storybook-static -p 6006",
-    "storycap": "storycap http://localhost:6006"
+    "storycap": "storycap http://localhost:6006",
+    "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run build-storybook --quiet && npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && npx storycap http://localhost:6006\""
   },
   "dependencies": {
     "@types/node": "22.7.4",
     "@types/react": "18.3.10",
     "@types/react-dom": "18.3.0",
+    "concurrently": "^9.0.1",
     "eslint": "8.57.1",
     "eslint-config-next": "14.2.14",
     "next": "14.2.14",
@@ -23,7 +25,8 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "storycap": "^5.0.1",
-    "typescript": "5.6.2"
+    "typescript": "5.6.2",
+    "wait-on": "^8.0.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
