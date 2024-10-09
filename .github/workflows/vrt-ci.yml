@@ -52,7 +52,7 @@ jobs:
         run: npm run server-storybook &
 
       - name: wait
-        run: wait-on tcp:6006
+        run: npx wait-on tcp:6006
 
       - name: storycap
         run: npm run storycap
