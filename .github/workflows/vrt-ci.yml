@@ -57,13 +57,13 @@ jobs:
         run: npx puppeteer browsers install chrome
 
       - name: storybook
-        run: npm run build-storybook &&
+        run: npm run build-storybook
 
       - name: server-storybook
-        run: npx http-server storybook-static -p 6006 &&
+        run: npx http-server storybook-static -p 6006 && npx storycap http://localhost:6006
 
-      - name: storycap
-        run: npx storycap http://localhost:6006
+      # - name: storycap
+      #   run: 
 
       - name: mv
         run: mkdir -p .reg
