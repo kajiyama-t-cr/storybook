@@ -11,7 +11,7 @@
     "build-storybook": "storybook build",
     "server-storybook": "http-server storybook-static -p 6006",
     "storycap": "storycap http://localhost:6006",
-    "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run build-storybook --quiet && npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && npm run storycap\""
+    "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && npm run storycap\""
   },
   "dependencies": {
     "@types/node": "22.7.4",

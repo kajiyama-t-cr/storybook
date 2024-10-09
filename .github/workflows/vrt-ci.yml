@@ -49,10 +49,13 @@ jobs:
         run: npm run build-storybook
 
       - name: server-storybook
-        run: npm run test-storybook:ci
+        run: npm run server-storybook &
 
-      # - name: storycap
-      #   run: 
+      - name: wait
+        run: wait-on tcp:6006
+
+      - name: storycap
+        run: npm run storycap
 
       - name: mv
         run: mkdir -p .reg
