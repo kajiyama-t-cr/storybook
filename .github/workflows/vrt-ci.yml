@@ -45,6 +45,9 @@ jobs:
       - name: install chrome
         run: npx puppeteer browsers install chrome
 
+      - name: storybook-foo
+        run: npm run storybook
+
       - name: storybook
         run: npm run build-storybook
 
